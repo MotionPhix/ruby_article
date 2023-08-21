@@ -1,0 +1,43 @@
+<%= form_with model: article do |f| %>
+
+  <p>
+    <%= f.label :title %>
+
+    <%= f.text_field :title, 
+      class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
+      placeholder: 'Fill out article title' %>
+
+    <div class="mt-1">
+      <div class="text-sm text-rose-400">
+        <%= article.errors.full_messages_for(:title)[0] %>
+      </div>
+    </div>
+  </p>
+
+  <p>
+    <%= f.label :body %>
+    
+    <%= f.text_area :body,
+      class: 'block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
+      placeholder: 'Type out the article content' %>
+
+    <div class="mt-1">
+      <div class="text-sm text-rose-400">
+        <%= article.errors.full_messages_for(:body)[0] %>
+      </div>
+    <div>
+  </p>
+
+  <div class="mt-4">
+    <%= f.button class: 'px-3 py-2.5 text-sm font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' do %>
+      
+      <i class="w-6 h-6 ti ti-article"></i>
+
+      <span>
+        <%= action %>
+      </span>
+      
+    <% end %>
+  </div>
+  
+<% end %>
