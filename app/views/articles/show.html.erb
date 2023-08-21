@@ -1,0 +1,44 @@
+<h1 class="flex items-center mb-6">
+  
+  <span class="text-indigo-600 hover:text-indigo-900">
+    <%= link_to articles_path, 
+      class: 'font-semibold h-8 w-8 p-1' do %>
+
+      <i class="w-5 h-5 ti ti-arrow-left"></i>
+
+      <span>All articles</span>
+
+    <% end %>
+  </span>
+
+  <span class="w-1/4"></span>
+  
+  <span class="mr-1 text-white bg-indigo-600 rounded-xl hover:bg-indigo-900">
+    <%= link_to edit_article_path, 
+      class: 'font-semibold h-8 w-8 p-1' do %>
+
+      <i class="w-5 h-5 ti ti-pencil"></i>
+
+    <% end %>
+  </span>
+  
+  <span class="text-white bg-indigo-600 rounded-xl hover:bg-indigo-900">
+    <%= link_to article_path(@article), 
+      class: 'font-semibold h-8 w-8 p-1',
+      method: :delete do %>
+
+      <i class="w-5 h-5 ti ti-trash"></i>
+
+    <% end %>
+  </span>
+</h1>
+
+<div>
+
+  <h1 class="text-2xl"><%= @article.title %></h1>
+     
+  <p><%= @article.body %></p>
+
+</div>
+
+
