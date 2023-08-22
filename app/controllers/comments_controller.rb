@@ -1,8 +1,16 @@
 class CommentsController < ApplicationController
 
+  http_basic_authenticate_with name: "ultra", password: "pass", only: :destroy
+
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
+
+    # if @comment.id
+    #   redirect_to @article
+    # else
+    #   render :article.show, status: :unprocessable_entity
+    # end
 
     redirect_to article_path(@article)
   end
@@ -17,7 +25,7 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:author, :body)
+      params.require(:comment).permit(:author, :body, :status)
     end
 
 end
