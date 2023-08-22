@@ -1,49 +1,53 @@
-<article class="max-w-4xl mx-auto">
+<h1 class="flex items-center mb-6">
+  
+  <span class="text-indigo-600 hover:text-indigo-900">
+    <%= link_to articles_path, 
+      class: 'font-semibold h-8 w-8 p-1' do %>
 
-  <h1 class="flex items-center mb-6">
+      <i class="w-5 h-5 ti ti-arrow-left"></i>
+
+      <span>All articles</span>
+
+    <% end %>
+  </span>
+
+  <span class="w-[2rem]"></span>
+  
+  <span class="mr-1 text-white bg-indigo-600 rounded-xl hover:bg-indigo-900">
+    <%= link_to edit_article_path, 
+      class: 'font-semibold h-8 w-8 p-1' do %>
+
+      <i class="w-5 h-5 ti ti-pencil"></i>
+
+    <% end %>
+  </span>
+  
+  <span class="text-white bg-indigo-600 rounded-xl hover:bg-indigo-900">
+    <%= link_to article_path(@article), 
+      class: 'font-semibold h-8 w-8 p-1',
+      data: {
+        turbo_method: :delete,
+        turbo_confirm: "Really delete the article?"
+      } do %>
+
+      <i class="w-5 h-5 ti ti-trash"></i>
+
+    <% end %>
+  </span>
+</h1>
+
+<div class="pb-8 border-b">
+
+  <h1 class="mb-4 text-2xl font-medium"><%= @article.title %></h1>
     
-    <span class="text-indigo-600 hover:text-indigo-900">
-      <%= link_to articles_path, 
-        class: 'font-semibold h-8 w-8 p-1' do %>
+  <p><%= @article.body %></p>
 
-        <i class="w-5 h-5 ti ti-arrow-left"></i>
+</div>
 
-        <span>All articles</span>
+<h2 class="mt-8">Comments</h2>
 
-      <% end %>
-    </span>
+<%= render @article.comments %>
 
-    <span class="w-[2rem]"></span>
-    
-    <span class="mr-1 text-white bg-indigo-600 rounded-xl hover:bg-indigo-900">
-      <%= link_to edit_article_path, 
-        class: 'font-semibold h-8 w-8 p-1' do %>
+<h2 class="mt-8">Add a comment:</h2>
 
-        <i class="w-5 h-5 ti ti-pencil"></i>
-
-      <% end %>
-    </span>
-    
-    <span class="text-white bg-indigo-600 rounded-xl hover:bg-indigo-900">
-      <%= link_to article_path(@article), 
-        class: 'font-semibold h-8 w-8 p-1',
-        data: {
-          turbo_method: :delete,
-          turbo_confirm: "Really delete the article?"
-        } do %>
-
-        <i class="w-5 h-5 ti ti-trash"></i>
-
-      <% end %>
-    </span>
-  </h1>
-
-  <div>
-
-    <h1 class="mb-4 text-2xl font-medium"><%= @article.title %></h1>
-      
-    <p><%= @article.body %></p>
-
-  </div>
-
-</article>
+<%= render 'comments/form' %>
